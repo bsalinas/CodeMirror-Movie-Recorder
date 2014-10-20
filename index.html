@@ -1,0 +1,90 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="lib/cm-movie.css">
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="lib/codemirror.js"></script>
+<script src="lib/css.js"></script>
+<script src="lib/htmlmixed.js"></script>
+<script src="lib/javascript.js"></script>
+<script src="lib/xml.js"></script>
+<script src="lib/jquery-2.1.1.min.js"></script>
+<script src="lib/cm-movie-full.js"></script>
+<script src="initialScript.js"></script>
+<script src="recorder.js"></script>
+<style>
+	iframe{
+		width:80%;
+	}
+	.code-example{
+		width:50%;
+		display:inline-block;
+	}
+	#scriptContainer{
+		width:50%;
+		float:right;
+	}
+	.script{
+		width:100%;
+		height:80%;
+	}
+	.btn{
+		border-radius:3px;
+		color:white;
+		background-color:rgb(120,120,255);
+		padding:5px 10px;
+		text-decoration:none;
+		margin-bottom:10px;
+	}
+	.btn:hover{
+		background-color:rgb(20,20,255);
+	}
+	.title{
+		margin-bottom:10px;
+	}
+	#recordingIndicator{
+		padding:2px 8px;
+	}
+	#recordingIndicator[data-recording="yes"]{
+		background-color:#f2f2f2;
+	}
+	#recordingIndicator[data-recording="no"]{
+		background-color:#444;
+		color:white;
+	}
+</style>
+</head>
+<body>
+	<div class="code-example">
+		<div class="title">
+			<h3>CodeMirror Movie Recorder</h3>
+			<a class="btn playBtn" href="#">Play Script</a>
+			<span id="recordingIndicator" data-recording="yes">Recording</span>
+		</div>
+<textarea id="code" class="code" name="code">
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+
+</style>
+</head>
+<body>
+    |
+</body>
+</html>
+@@@
+
+</textarea>
+  	<h3>Preview</h3>
+		<iframe id="preview" class="preview"></iframe>
+</div>
+<div id="scriptContainer">
+<h3>Script</h3>
+<a href="#" class="btn" id="clear">Clear Script</a>
+<p>To use this script, you must copy it into your html where the current script is</p>
+<textarea class="script"></textarea>
+</div>
+
+</body>
+</html>
