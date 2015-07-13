@@ -6,7 +6,11 @@ $(document).ready(function(){
     var currentPos = {line:0,ch:0};
     var commands = initialScript;
     var recording = true;
-    var initialContent = '<!doctype html>\n<html lang="en">\n<head>\n<style>\n\n</style>\n</head>\n<body>\n    |\n</body>\n</html>\n@@@';
+    var initialContent = '<!doctype html>\n<html lang="en">\n<head>\n<style>\n\n</style>\n</head>\n<body>\n    |\n</body>\n</html>';
+    $('.html').val(initialContent);
+    $('.html').change(function(e){
+    	thisMovie = initializeMovie();
+    })
 	var parseCommandsToText = function(comm){
 		var stringVersion = ""
 		for(i=0; i<commands.length; i++){
@@ -18,9 +22,9 @@ $(document).ready(function(){
     var initializeMovie = function(){
     	$('.CodeMirror').remove();
     	 
-    	$('#code').val(initialContent+"\n"+parseCommandsToText(commands))
+    	$('#code').val($('.html').val()+"\n@@@\n"+parseCommandsToText(commands))
     	var movie = CodeMirror.movie('code');
-   		$('.script').text(initialContent+"\n"+parseCommandsToText(commands));
+   		$('.script').text('@@@\n'+parseCommandsToText(commands));
    		 movie.on('stop', function(cm, evt){
    		 	console.log('stopped');
    		 	$('#recordingIndicator').text('Recording');
@@ -61,7 +65,7 @@ $(document).ready(function(){
 		    	var stringVersion = parseCommandsToText(commands);
 		    	console.log(stringVersion);
 		    	console.log(evt);
-		    	$('.script').text(initialContent + '\n'+stringVersion)
+		    	$('.script').text(stringVersion)
 		    }
 	      clearTimeout(delay);
 	      delay = setTimeout(function(){
